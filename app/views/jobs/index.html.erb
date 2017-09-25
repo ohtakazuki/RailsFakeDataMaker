@@ -1,0 +1,26 @@
+<h1>Jobs#index</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>フォーマット</th>
+      <th>文字コード</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @jobs.each do |job| %>
+    <tr>
+      <td><%= job.name %></td>
+      <td><%= job.format %></td>
+      <td><%= job.char_code %></td>
+      <td>
+        <%= link_to "編集", edit_job_path(job) %>
+        <%= link_to "削除", job, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "新規登録", new_job_path %>

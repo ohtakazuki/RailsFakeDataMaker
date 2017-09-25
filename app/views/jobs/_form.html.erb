@@ -1,0 +1,35 @@
+<h1><%= yield(:title) %></h1>
+
+<div class="row">
+  <%= form_for(@job, url: yield(:url), html: {class: 'form-horizontal'}) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="form-group">
+      <%= f.label :name, class: 'col-md-2 control-label' %>
+      <div class="col-md-10">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :format, class: 'col-md-2 control-label' %>
+      <div class="col-md-10">
+        <%= f.select :format, Job.formats.keys.to_a, {},class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :char_code, class: 'col-md-2 control-label' %>
+      <div class="col-md-10">
+        <%= f.select :char_code, Job.char_codes.keys.to_a, {},class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-10 col-md-offset-2">
+        <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+      </div>
+    </div>
+
+  <% end %>
+</div>

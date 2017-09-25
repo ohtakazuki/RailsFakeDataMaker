@@ -16,6 +16,9 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">メニュー <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 		        <% if logged_in? %>
+      				<li><%= link_to "ユーザー一覧", users_path %></li>
+      				<li><%= link_to "ジョブ一覧", jobs_path %></li>
+              <li class="divider"></li>
       				<li><%= link_to "ログアウト", logout_path, method: :delete %></li>
             <% else %>
               <li><%= link_to "ログイン", login_path %></li>

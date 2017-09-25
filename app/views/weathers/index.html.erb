@@ -1,0 +1,5 @@
+<h1>Weathers#index</h1>
+
+<% @elements.each do |element| %>
+  <%= element.get_attribute(:id) %> <%= element.inner_text %><br>
+<% end %>
