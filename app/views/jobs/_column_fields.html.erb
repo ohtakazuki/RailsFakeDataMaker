@@ -1,0 +1,9 @@
+<div>
+    <%= f.text_field :id %>
+    <%= f.text_field :job_id %>
+    <%= f.label :name, "Amount" %>        
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :data_type, "Renter" %>
+    <%= f.select :data_type, Column.data_types.keys.to_a, {} %>
+</div>

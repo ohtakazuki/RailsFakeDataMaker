@@ -7,6 +7,8 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
+    # 3.times {|i| @job.columns.push(Column.new(name:"name#{i}")) }
+    3.times {|i| @job.columns.build(name:"name#{i}") }
   end
 
   def create
@@ -42,6 +44,11 @@ class JobsController < ApplicationController
   private
 
     def job_params
-      params.require(:job).permit(:name, :format, :char_code)
+      #params.require(:job).permit(:name, :format, :char_code, columns_attributes:[:name, :data_type])
+      #params.require(:job).permit(:name, :format, :char_code, :columns)
+      #params.require(:job).permit(:name, :format, :char_code, :columns => [])
+      #params.require(:job).permit(:name, :format, :char_code, {:columns => []})
+      #params.require(:job).permit(:name, :format, :char_code, columns_attributes: [:id, :name, :data_type])
+      params.require(:job).permit(:name, :format, :char_code, columns_attributes: [:id, :name, :data_type, :job_id])
     end
 end
