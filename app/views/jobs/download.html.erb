@@ -1,0 +1,18 @@
+<%
+arr = []
+@job.columns.each do |column|
+  arr.push(column.name)
+end
+%>
+<%= arr.join %>
+
+<%
+@cnt.times do
+  arr = []
+  @job.columns.each do |column|
+    # Faker::const_get("Beer").send("name")
+    arr.push(Faker::const_get(column.data_type).send(column.data_key))
+  end
+  %>
+  <%= arr.join %>
+<% end %>

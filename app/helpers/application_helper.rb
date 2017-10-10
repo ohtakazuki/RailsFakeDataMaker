@@ -8,4 +8,10 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+
+  # Fakerのクラス配列を返す
+  def faker_list
+    @faker_list ||= Faker.constants.select {|c| Faker.const_get(c).is_a? Class}
+  end
+
 end

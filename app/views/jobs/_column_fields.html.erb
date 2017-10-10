@@ -1,9 +1,11 @@
-<div>
-    <%= f.text_field :id %>
-    <%= f.text_field :job_id %>
-    <%= f.label :name, "Amount" %>        
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :data_type, "Renter" %>
-    <%= f.select :data_type, Column.data_types.keys.to_a, {} %>
+<div class="list-group-item list-group-item-info form-inline">
+    <%= f.hidden_field :id %>
+    <%= f.hidden_field :job_id %>
+    <%= f.text_field :name, class: 'form-control column_name' %>
+    <%# no3 parameter {} is necessery when you write html attribute(ex 'class')
+    <%= f.select :data_type, Column.data_types.keys.to_a, {},class: 'form-control' %>
+    <%= f.select :data_type, get_fakers, {:include_blank => true},class: 'form-control data_type' %>
+    <%= f.select :data_key, get_subfakers(f.object.data_type), {:include_blank => true}, class: "form-control data_key" %>
+    <%= f.hidden_field :order_number, class: 'order_number' %>
+    <i class="remove_button glyphicon glyphicon-remove text-danger"></i>
 </div>

@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170926041447) do
+ActiveRecord::Schema.define(version: 20170927065801) do
 
   create_table "columns", force: :cascade do |t|
     t.integer  "job_id"
     t.string   "name"
-    t.integer  "data_type",  limit: 1, default: 0, null: false
+    t.string   "data_type"
     t.string   "data_key"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "order_number"
+    t.index ["job_id"], name: "index_columns_on_job_id"
   end
 
   create_table "jobs", force: :cascade do |t|

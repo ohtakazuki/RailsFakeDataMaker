@@ -1,0 +1,48 @@
+<%= form_for(:session, url: jobs_download_path) do |f| %>
+<div class="row">
+  <% provide(:title, "ジョブの実行") %>
+  <table class="table">
+    <tr>
+      <th>ジョブ名</th>
+      <td><%=@job.name%></td>
+    </tr>
+    <tr>
+      <th>フォーマット</th>
+      <td><%=@job.format%></td>
+    </tr>
+    <tr>
+      <th>文字コード</th>
+      <td><%=@job.char_code%></td>
+    </tr>
+    <tr>
+      <th>出力項目</th>
+      <td>
+        <table class="table">
+          <% @job.columns.each do |column| %>
+            <tr>
+              <td><%=column.name%></td>
+              <td><%=column.data_type%></td>
+              <td><%=column.data_key%></td>
+            </tr>
+          <% end %>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th>行数</th>
+      <td>
+          <%= f.number_field :cnt, min: 0, max: 10000, value: 100, class: 'form-control' %>
+          <p>(最大10000。未入力100件)</p>
+      </td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>
+        <%= f.submit "データ作成", class: "btn btn-primary" %>
+        <%= link_to "一覧へ戻る", jobs_path, class: "btn btn-default" %>
+        <%= f.hidden_field :id, value: @job.id %>
+      </td>
+    </tr>
+  </table>
+</div>
+<% end %>

@@ -1,4 +1,4 @@
-<h1>Jobs#index</h1>
+<% provide(:title, "ジョブ一覧") %>
 <table class="table">
   <thead>
     <tr>
@@ -15,12 +15,13 @@
       <td><%= job.format %></td>
       <td><%= job.char_code %></td>
       <td>
-        <%= link_to "編集", edit_job_path(job) %>
-        <%= link_to "削除", job, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        <%= link_to "詳細(データ作成もこちら)", job, class: "btn btn-success btn-sm" %>｜
+        <%= link_to "編集", edit_job_path(job), class: "btn btn-info btn-sm" %>｜
+        <%= link_to "削除", job, method: :delete,class: "btn btn-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
       </td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to "新規登録", new_job_path %>
+<%= link_to "新規登録", new_job_path, class: "btn btn-info" %>
